@@ -1,0 +1,297 @@
+[
+    {
+        "name": "intrigue",
+        "level": 1,
+        "points": 0,
+        "bonus": [
+            {
+                "name": "intrigue",
+                "apttitudes": 2
+            }
+        ]
+    },
+    {
+        "name": "intrigue",
+        "level": 2,
+        "points": 20,
+        "bonus": [
+            {
+                "name": "intrigue",
+                "apttitudes": 4
+            }
+        ]
+    },
+    {
+        "name": "intrigue",
+        "level": 3,
+        "points": 40,
+        "bonus": [
+            {
+                "name": "intrigue",
+                "apttitudes": 6
+            }
+        ]
+    },
+    {
+        "name": "intrigue",
+        "level": 4,
+        "points": 80,
+        "bonus": [
+            {
+                "name": "intrigue",
+                "apttitudes": 8
+            }
+        ]
+    },
+    {
+        "name": "intrigue",
+        "level": 5,
+        "points": 150,
+        "bonus": [
+            {
+                "name": "intrigue",
+                "apttitudes": 10
+            },
+            {
+                "name": "diplomatie",
+                "apttitudes": 3
+            }
+        ]
+    },
+    {
+        "name": "diplomatie",
+        "level": 1,
+        "points": 0,
+        "bonus": [
+            {
+                "name": "diplomatie",
+                "apttitudes": 2
+            }
+        ]
+    },
+    {
+        "name": "diplomatie",
+        "level": 2,
+        "points": 20,
+        "bonus": [
+            {
+                "name": "diplomatie",
+                "apttitudes": 4
+            }
+        ]
+    },
+    {
+        "name": "diplomatie",
+        "level": 3,
+        "points": 40,
+        "bonus": [
+            {
+                "name": "diplomatie",
+                "apttitudes": 6
+            }
+        ]
+    },
+    {
+        "name": "diplomatie",
+        "level": 4,
+        "points": 80,
+        "bonus": [
+            {
+                "name": "diplomatie",
+                "apttitudes": 8
+            }
+        ]
+    },
+    {
+        "name": "diplomatie",
+        "level": 5,
+        "points": 150,
+        "bonus": [
+            {
+                "name": "diplomatie",
+                "apttitudes": 10
+            },
+            {
+                "name": "martialite",
+                "apttitudes": 3
+            }
+        ]
+    },
+    {
+        "name": "intendance",
+        "level": 1,
+        "points": 0,
+        "bonus": [
+            {
+                "name": "intendance",
+                "apttitudes": 2
+            }
+        ]
+    },
+    {
+        "name": "intendance",
+        "level": 2,
+        "points": 20,
+        "bonus": [
+            {
+                "name": "intendance",
+                "apttitudes": 4
+            }
+        ]
+    },
+    {
+        "name": "intendance",
+        "level": 3,
+        "points": 40,
+        "bonus": [
+            {
+                "name": "intendance",
+                "apttitudes": 6
+            }
+        ]
+    },
+    {
+        "name": "intendance",
+        "level": 4,
+        "points": 80,
+        "bonus": [
+            {
+                "name": "intendance",
+                "apttitudes": 8
+            }
+        ]
+    },
+    {
+        "name": "intendance",
+        "level": 5,
+        "points": 150,
+        "bonus": [
+            {
+                "name": "intendance",
+                "apttitudes": 10
+            },
+            {
+                "name": "erudition",
+                "apttitudes": 3
+            }
+        ]
+    },
+    {
+        "name": "martialite",
+        "level": 1,
+        "points": 0,
+        "bonus": [
+            {
+                "name": "martialite",
+                "apttitudes": 2
+            }
+        ]
+    },
+    {
+        "name": "martialite",
+        "level": 2,
+        "points": 20,
+        "bonus": [
+            {
+                "name": "martialite",
+                "apttitudes": 4
+            }
+        ]
+    },
+    {
+        "name": "martialite",
+        "level": 3,
+        "points": 40,
+        "bonus": [
+            {
+                "name": "martialite",
+                "apttitudes": 6
+            }
+        ]
+    },
+    {
+        "name": "martialite",
+        "level": 4,
+        "points": 80,
+        "bonus": [
+            {
+                "name": "martialite",
+                "apttitudes": 8
+            }
+        ]
+    },
+    {
+        "name": "martialite",
+        "level": 5,
+        "points": 150,
+        "bonus": [
+            {
+                "name": "martialite",
+                "apttitudes": 10
+            },
+            {
+                "name": "intendance",
+                "apttitudes": 3
+            }
+        ]
+    },
+    {
+        "name": "erudition",
+        "level": 1,
+        "points": 0,
+        "bonus": [
+            {
+                "name": "erudition",
+                "apttitudes": 2
+            }
+        ]
+    },
+    {
+        "name": "erudition",
+        "level": 2,
+        "points": 20,
+        "bonus": [
+            {
+                "name": "erudition",
+                "apttitudes": 4
+            }
+        ]
+    },
+    {
+        "name": "erudition",
+        "level": 3,
+        "points": 40,
+        "bonus": [
+            {
+                "name": "erudition",
+                "apttitudes": 6
+            }
+        ]
+    },
+    {
+        "name": "erudition",
+        "level": 4,
+        "points": 80,
+        "bonus": [
+            {
+                "name": "erudition",
+                "apttitudes": 8
+            }
+        ]
+    },
+    {
+        "name": "erudition",
+        "level": 5,
+        "points": 150,
+        "bonus": [
+            {
+                "name": "erudition",
+                "apttitudes": 10
+            },
+            {
+                "name": "intrigue",
+                "apttitudes": 3
+            }
+        ]
+    }
+]
