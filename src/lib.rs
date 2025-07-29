@@ -32,11 +32,14 @@ pub fn remove_personnality(traits_incompatibles: Vec<String>, personality_bonus:
     );
 }
 
-pub fn generate_personnage(datas: (Vec<Education>, Vec<Personality>), parameters : Parameters) -> Personnage {
-    let mut rng = rand::rng();
-    let mut statistiques = Statistiques::new();
+pub fn generate_personnage(parameters : Parameters) -> Personnage {
+    let datas: (Vec<Education>, Vec<Personality>) = load_data();
     let educations: Vec<Education> = datas.0;
     let personalities: Vec<Personality> =  datas.1;
+
+    let mut rng = rand::rng();
+    let mut statistiques = Statistiques::new();
+
 
     // dbg!(&args);
     /*
