@@ -1,27 +1,21 @@
-mod structs;
+pub mod structs;
 use structs::*;
-
-use std::fs::File;
-use clap::Parser;
-
 use rand::prelude::*;
 
-const EDUCATION_FILE: &str = "./ressources/educations.json";
-const PERSONNALITIES_FILE: &str = "./ressources/personnalities.json";
+const EDUCATION_FILE: &str = include_str!("../ressources/educations.json");
+const PERSONNALITIES_FILE: &str = include_str!("../ressources/personnalities.json");
 const LIMIT_POINTS: i32 = 400;
 
 
 
 pub fn load_data() -> (Vec<Education>, Vec<Personality>) {
-    let education_file = File::open(EDUCATION_FILE).unwrap();
-    let educations : Vec<Education> = serde_json::from_reader(education_file)
-    .expect("error while reading or parsing");
+    let educations: Vec<Education> = serde_json::from_str(EDUCATION_FILE)
+    .expect("error while parsing education data");
 
-    let personnalities_file = File::open(PERSONNALITIES_FILE).unwrap();
-    let personnalities : Vec<Personality> = serde_json::from_reader(personnalities_file)
-    .expect("error while reading or parsing");
+    let personnalities: Vec<Personality> = serde_json::from_str(PERSONNALITIES_FILE)
+    .expect("error while parsing personality data");
 
-    (educations, personnalities)
+(educations, personnalities)
 }
 
 pub fn remove_personnality(traits_incompatibles: Vec<String>, personality_bonus: &mut Vec<Personality>, personality_neutral: &mut Vec<Personality>) {
@@ -38,7 +32,7 @@ pub fn remove_personnality(traits_incompatibles: Vec<String>, personality_bonus:
     );
 }
 
-pub fn generate_personnage(datas: (Vec<Education>, Vec<Personality>), parameters : Option<Parameters>) -> Personnage {
+pub fn generate_personnage(datas: (Vec<Education>, Vec<Personality>), parameters : Parameters) -> Personnage {
     let mut rng = rand::rng();
     let mut statistiques = Statistiques::new();
     let educations: Vec<Education> = datas.0;
@@ -59,21 +53,21 @@ pub fn generate_personnage(datas: (Vec<Education>, Vec<Personality>), parameters
     let mut age: Age = Age::default();
     let mut educs_possible: Vec<Education> = educations;
 
-    let education_level_is_some = parameters.clone().unwrap().level.is_some();
-    let education_is_some = parameters.clone().unwrap().education.is_some();
-    let age_is_some = parameters.clone().unwrap().age.is_some();
+    let education_level_is_some = parameters.clone().level.is_some();
+    let education_is_some = parameters.clone().education.is_some();
+    let age_is_some = parameters.clone().age.is_some();
     
-    if parameters.clone().is_some() {
+    //if parameters.clone().is_some() {
         //age
         if age_is_some {
-            age = Age(parameters.clone().unwrap().age.unwrap());
+            age = Age(parameters.clone().age.unwrap());
         }
 
         // education
         if education_is_some {
-            match parameters.as_ref().unwrap().education.as_ref().unwrap().as_str() {
+            match parameters.education.as_ref().unwrap().as_str() {
                 "diplomatie" | "martialite" | "intrigue" | "intendance" | "erudition" => {
-                    let education_choosen = parameters.clone().unwrap().education.clone().unwrap();
+                    let education_choosen = parameters.education.clone().unwrap();
                     educs_possible = educs_possible.into_iter().filter(|educ| educ.name == education_choosen).collect();
                 },
                 _ => {
@@ -83,9 +77,9 @@ pub fn generate_personnage(datas: (Vec<Education>, Vec<Personality>), parameters
         }
 
         if education_level_is_some {
-            match parameters.clone().unwrap().level.unwrap() {
+            match parameters.level.unwrap() {
                 1 | 2 | 3 | 4 | 5 => {
-                    let education_level_choosen = parameters.clone().unwrap().level.clone().unwrap() as u8;
+                    let education_level_choosen = parameters.level.clone().unwrap() as u8;
                     educs_possible = educs_possible.into_iter().filter(|educ| educ.level == education_level_choosen).collect();
                 },
                 _ => {
@@ -93,7 +87,7 @@ pub fn generate_personnage(datas: (Vec<Education>, Vec<Personality>), parameters
                 }
             }
         }
-    }
+    //}
 
 
     let score_age = age.get_score_age();

@@ -1,6 +1,6 @@
 use std::fmt;
 
-#[derive(Clone)]
+#[derive(Clone, Default)]
 pub struct Parameters {
     pub education: Option<String>,
     pub level: Option<i8>,
