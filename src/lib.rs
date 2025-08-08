@@ -53,7 +53,7 @@ pub fn generate_personnage(parameters : Parameters) -> Personnage {
     */
     // @todo : faire le liste des points de l'age
 
-    let mut age: Age = Age::default();
+    let age: Age;
     let mut educs_possible: Vec<Education> = educations;
 
     let education_level_is_some = parameters.clone().level.is_some();
@@ -64,6 +64,8 @@ pub fn generate_personnage(parameters : Parameters) -> Personnage {
         //age
         if age_is_some {
             age = Age(parameters.clone().age.unwrap());
+        } else {
+            age = Age::random();
         }
 
         // education
