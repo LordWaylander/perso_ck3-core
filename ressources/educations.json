@@ -1,6 +1,21 @@
 [
     {
         "name": "intrigue",
+        "level": 0,
+        "points": 5,
+        "bonus": [
+            {
+                "name": "intrigue",
+                "apttitudes": 1
+            },
+            {
+                "name": "diplomatie",
+                "apttitudes": 1
+            }
+        ]
+    },
+    {
+        "name": "intrigue",
         "level": 1,
         "points": 0,
         "bonus": [
@@ -55,6 +70,21 @@
             {
                 "name": "diplomatie",
                 "apttitudes": 3
+            }
+        ]
+    },
+    {
+        "name": "diplomatie",
+        "level": 0,
+        "points": 5,
+        "bonus": [
+            {
+                "name": "diplomatie",
+                "apttitudes": 1
+            },
+            {
+                "name": "erudition",
+                "apttitudes": 1
             }
         ]
     },
@@ -114,6 +144,21 @@
             {
                 "name": "martialite",
                 "apttitudes": 3
+            }
+        ]
+    },
+    {
+        "name": "intendance",
+        "level": 0,
+        "points": 5,
+        "bonus": [
+            {
+                "name": "intendance",
+                "apttitudes": 1
+            },
+            {
+                "name": "martialite",
+                "apttitudes": 1
             }
         ]
     },
@@ -178,6 +223,21 @@
     },
     {
         "name": "martialite",
+        "level": 0,
+        "points": 5,
+        "bonus": [
+            {
+                "name": "intrigue",
+                "apttitudes": 1
+            },
+            {
+                "name": "martialite",
+                "apttitudes": 1
+            }
+        ]
+    },
+    {
+        "name": "martialite",
         "level": 1,
         "points": 0,
         "bonus": [
@@ -232,6 +292,21 @@
             {
                 "name": "intendance",
                 "apttitudes": 3
+            }
+        ]
+    },
+    {
+        "name": "erudition",
+        "level": 0,
+        "points": 5,
+        "bonus": [
+            {
+                "name": "erudition",
+                "apttitudes": 1
+            },
+            {
+                "name": "intendance",
+                "apttitudes": 1
             }
         ]
     },
