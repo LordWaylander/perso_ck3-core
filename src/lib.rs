@@ -68,12 +68,24 @@ pub fn generate_personnage(parameters : Parameters) -> Personnage {
             age = Age::random();
         }
 
+        //dbg!(&age);
+
         // education
         if education_is_some {
             match parameters.education.as_ref().unwrap().as_str() {
                 "diplomatie" | "martialite" | "intrigue" | "intendance" | "erudition" => {
-                    let education_choosen = parameters.education.clone().unwrap();
-                    educs_possible = educs_possible.into_iter().filter(|educ| educ.name == education_choosen).collect();
+                    // car <2 tu y a pas le droit, c'est le jeu qui décidera
+                    if age < Age(16) && age > Age(2) {
+                        //todo!();
+                        let education_choosen = parameters.education.clone().unwrap();
+                        educs_possible = educs_possible.into_iter().filter(|educ| educ.level == 0 && educ.name == education_choosen).collect();
+                    } else if age >= Age(16) {
+                        let education_choosen = parameters.education.clone().unwrap();
+                        educs_possible = educs_possible.into_iter().filter(|educ| educ.name == education_choosen).collect();
+                    } else {
+                        todo!("age < 2");
+                        //educs_possible.clear();
+                    }
                 },
                 _ => {
                    panic!("Education pas dans la liste")
@@ -81,7 +93,7 @@ pub fn generate_personnage(parameters : Parameters) -> Personnage {
             }
         }
 
-        if education_level_is_some {
+        if education_level_is_some && age >= Age(16) {
             match parameters.level.unwrap() {
                 1 | 2 | 3 | 4 | 5 => {
                     let education_level_choosen = parameters.level.clone().unwrap() as u8;
@@ -101,27 +113,42 @@ pub fn generate_personnage(parameters : Parameters) -> Personnage {
     /* Education -> ------------------------------------------------------------------------------ */
     let education_personnage: Education;
 
-    
-    if education_level_is_some || education_is_some {
-        let idx = rng.random_range(0..educs_possible.len());
-        education_personnage = educs_possible[idx].clone();
-    } else {
-        // sinon rien est rentré, donc full random mais avec une certaine chance d'obtenir une bonne éducation
-        let percentage = rng.random_range(0..100);
-
-        if percentage < 10 {
-            let very_good_education: Vec<Education> = educs_possible.into_iter().filter(|educ| educ.level == 5).collect();
-            let educ_index= rng.random_range(0..very_good_education.len());
-            education_personnage = very_good_education[educ_index].clone();
-        } else if percentage < 90 {
-            let good_education: Vec<Education> = educs_possible.into_iter().filter(|educ| educ.level >= 3 && educ.level < 5).collect();
-            let educ_index= rng.random_range(0..good_education.len());
-            education_personnage = good_education[educ_index].clone();
+    if age < Age(16) && age > Age(2) {
+        // pcq plus haut si défini on met dans un array mais si pas défini...
+        if education_is_some {
+            let idx = rng.random_range(0..educs_possible.len());
+            education_personnage = educs_possible[idx].clone();
         } else {
-            let education: Vec<Education> =educs_possible.into_iter().filter(|educ| educ.level < 3).collect();
-            let educ_index= rng.random_range(0..education.len());
-            education_personnage = education[educ_index].clone();
+            educs_possible = educs_possible.into_iter().filter(|educ| educ.level == 0).collect();
+            let idx = rng.random_range(0..educs_possible.len());
+            education_personnage = educs_possible[idx].clone();
         }
+        
+       
+    } else if age >= Age(16) {
+        if education_level_is_some || education_is_some {
+            let idx = rng.random_range(0..educs_possible.len());
+            education_personnage = educs_possible[idx].clone();
+        } else {
+            // sinon rien est rentré, donc full random mais avec une certaine chance d'obtenir une bonne éducation
+            let percentage = rng.random_range(0..100);
+
+            if percentage < 10 {
+                let very_good_education: Vec<Education> = educs_possible.into_iter().filter(|educ| educ.level == 5).collect();
+                let educ_index= rng.random_range(0..very_good_education.len());
+                education_personnage = very_good_education[educ_index].clone();
+            } else if percentage < 90 {
+                let good_education: Vec<Education> = educs_possible.into_iter().filter(|educ| educ.level >= 3 && educ.level < 5).collect();
+                let educ_index= rng.random_range(0..good_education.len());
+                education_personnage = good_education[educ_index].clone();
+            } else {
+                let education: Vec<Education> =educs_possible.into_iter().filter(|educ| educ.level < 3).collect();
+                let educ_index= rng.random_range(0..education.len());
+                education_personnage = education[educ_index].clone();
+            }
+        }
+    } else {
+        todo!()
     }
 
     // dbg!(&education_personnage);
@@ -172,7 +199,13 @@ pub fn generate_personnage(parameters : Parameters) -> Personnage {
     // dbg!("personality_neutral : ");
     // dbg!("{:?}", personality_neutral);
 
-    while personnality_personnage.len() < 3 {
+
+    // < 3 SI age >= 16, 
+    // dessous (RP) age <8 = 0; 8..=10 = 1 ; 10..=12 = 2; >14 = 3
+    // a vérifier pour les valeurs en jeu
+    //todo!()
+    let limit_number_personnality = 3;
+    while personnality_personnage.len() < limit_number_personnality {
         let percentage= rng.random_range(0..100);
         // 60% de chances d'obtenir une personnalité qui correspond à l'éducation
         if percentage < 60 {

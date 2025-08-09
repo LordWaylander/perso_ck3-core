@@ -40,7 +40,7 @@ pub struct Personnage {
     pub points_totaux: u16
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq, PartialOrd)]
 pub struct Age(pub i8);
 
 impl Default for Age {
